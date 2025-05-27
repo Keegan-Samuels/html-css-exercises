@@ -1,0 +1,90 @@
+/* Layout: 
+o Use flexbox or grid to create a responsive layout
+o Cards should be 300px wide
+o 3 cards per row on desktop
+o 2 cards per row on tablet (max-width: 768px)
+o 1 card per row on mobile (max-width: 480px) */
+/* • Card styling:
+o Box shadow: 0 2px 5px rgba (0,0,0,0.1)
+o Border radius: 8px
+o Padding: 15px
+/* o Background color: white */
+/* • Button styling: 
+o Background color: #4CAF50
+o White text
+o Padding: 10px 20px
+o Border radius: 5px
+o Hover effect: darken background
+• Add transitions for hover effects */
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    background-color: green;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.product-container{
+    display: grid;
+    grid-template-columns: repeat(3, 300px);
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 15px;
+}
+
+.product-card{
+    background-color: white;
+    width: 300px;
+    border: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0, 1);
+    padding: 15px;
+    text-align: center ;
+    transition: transform 0.3s ease;
+
+}
+
+.product-card img{
+    width: 100%;
+    border-radius: 8px;
+}
+/* do media */
+
+@media (max-width: 768px) {
+    .product-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .product-container {
+        grid-template-columns: 1fr;
+    }
+}
+.product-card:hover {
+    transform: translateY(-5px);
+}
+.product-card h2 {
+    font-size: 1em;
+    margin: 10px 0;
+}   
+
+/* the footer */
+footer {
+    background-color: rgb(10, 161, 203);
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+.foot-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
