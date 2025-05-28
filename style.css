@@ -1,90 +1,117 @@
-/* Layout: 
-o Use flexbox or grid to create a responsive layout
-o Cards should be 300px wide
-o 3 cards per row on desktop
-o 2 cards per row on tablet (max-width: 768px)
-o 1 card per row on mobile (max-width: 480px) */
-/* • Card styling:
-o Box shadow: 0 2px 5px rgba (0,0,0,0.1)
-o Border radius: 8px
-o Padding: 15px
-/* o Background color: white */
-/* • Button styling: 
-o Background color: #4CAF50
-o White text
-o Padding: 10px 20px
-o Border radius: 5px
-o Hover effect: darken background
-• Add transitions for hover effects */
-
-body{
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: white;
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-header{
-    background-color: green;
-    color: white;
-    padding: 20px 0;
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+h1 {
     text-align: center;
+    margin-bottom: 20px;
 }
 
-.product-container{
+/* Gallery Layout */
+.gallery {
     display: grid;
-    grid-template-columns: repeat(3, 300px);
-    flex-wrap: wrap;
-    justify-content: center;
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
-    padding: 15px;
 }
-
-.product-card{
-    background-color: white;
-    width: 300px;
-    border: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0, 1);
-    padding: 15px;
-    text-align: center ;
-    transition: transform 0.3s ease;
-
-}
-
-.product-card img{
-    width: 100%;
-    border-radius: 8px;
-}
-/* do media */
 
 @media (max-width: 768px) {
-    .product-container {
+    .gallery {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 480px) {
-    .product-container {
+    .gallery {
         grid-template-columns: 1fr;
     }
 }
-.product-card:hover {
-    transform: translateY(-5px);
-}
-.product-card h2 {
-    font-size: 1em;
-    margin: 10px 0;
-}   
 
-/* the footer */
-footer {
-    background-color: rgb(10, 161, 203);
-    color: white;
-    text-align: center;
-    padding: 10px 0;
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
-.foot-container {
+
+.gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.gallery-info {
+    padding: 10px;
+}
+
+.gallery-info h3 {
+    margin: 5px 0;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.gallery-info .tag {
+    font-size: 0.85rem;
+    color: #777;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.gallery-item:hover .overlay {
+    opacity: 1;
+}
+
+.gallery-item.hide {
+    opacity: 0;
+    transform: scale(0.9);
+    pointer-events: none;
+}
+
+/* Filter Buttons */
+.filters {
     display: flex;
     justify-content: center;
-    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.filters button {
+    padding: 10px 20px;
+    background-color: #ddd;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.filters button.active,
+.filters button:hover {
+    background-color: #4caf50;
+    color: white;
 }
